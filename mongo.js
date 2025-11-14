@@ -32,4 +32,42 @@ finally{
 }
 
 }
+
 run();
+//server.js
+const express=require('express');
+const app=express();
+const port=3000;
+app.get('/',(req,res) =>
+{
+    res.send("welcome to the page")
+});
+app.use(express.json());
+app.get('/home/:id',(req,res)=>
+{
+    const userId=req.params.id;
+    res.send(`userid is :${userId}`)
+
+})
+app.get('/search',(req,res)=>
+{
+    const query=req.query.q;
+    const page=req.query.page||1;
+    res.send(`search query is :${query} and page number is ${page}`);
+
+})
+app.get('/name',(req,res)=>
+{
+    const name="sample";
+    res.status(201).send(` name sent was :${name}`);
+})
+app.get('/info',(req,res)=>
+{
+    const fullurl=`${req.protocol}://${req.get('host')}${req.originalUrl}`;
+    res.send(`the full url is :${fullurl}`);
+})
+
+app.listen(port,()=>
+{
+    console.log(`server is running at  https://localhost:${port}`)
+});
