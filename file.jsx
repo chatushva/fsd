@@ -14,7 +14,6 @@ return (
 <Link to="/about" style={{ marginRight: 10 }}>About</Link> 
 <Link to="/contact">Contact</Link> 
 </nav> 
-{/* Define Routes */} 
 <Routes> 
 <Route path="/" element={<Home />} /> 
 <Route path="/about" element={<About />} /> 
